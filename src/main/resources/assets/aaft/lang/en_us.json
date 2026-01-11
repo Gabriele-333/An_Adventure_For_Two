@@ -1,0 +1,8 @@
+{
+  "message.aaft.reject_join":"This world can only have 2 players.",
+
+  "toast.aaft.title": "Two Players Required",
+  "toast.aaft.need_second": "Play Multiplayer!",
+  "toast.aaft.waiting_second": "Waiting second player"
+
+}
