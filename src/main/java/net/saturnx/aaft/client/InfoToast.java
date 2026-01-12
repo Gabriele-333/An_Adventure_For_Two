@@ -18,12 +18,12 @@ package net.saturnx.aaft.client;/*
  * File created on: 08/01/2026
  */
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.toasts.Toast;
 import net.minecraft.client.gui.components.toasts.ToastComponent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.saturnx.aaft.client.state.ClientGameState;
 import org.jetbrains.annotations.NotNull;
 
 public class InfoToast implements Toast {
@@ -70,8 +70,8 @@ public class InfoToast implements Toast {
         float t = (float) ((Math.sin(time / speed) + 1.0) / 2.0);
         int textColor = lerpColor(0xFFFFFF, 0xFF5555, t);
 
-        gfx.drawString(font, title, 22, 7, textColor);
-        gfx.drawString(font, description, 22, 18, textColor);
+        gfx.drawString(font, title, 18, 7, textColor);
+        gfx.drawString(font, description, 18, 18, textColor);
 
         return ClientGameState.isWaiting()
                 ? Visibility.SHOW
