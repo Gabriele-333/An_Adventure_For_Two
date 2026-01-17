@@ -28,7 +28,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.saturnx.aaft.client.ClientGameState;
+import net.saturnx.aaft.client.state.ClientGameState;
 import net.saturnx.aaft.client.InfoToast;
 
 public record
