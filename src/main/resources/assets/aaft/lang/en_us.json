@@ -3,6 +3,10 @@
 
   "toast.aaft.title": "Two Players Required",
   "toast.aaft.need_second": "Play Multiplayer!",
-  "toast.aaft.waiting_second": "Waiting second player"
+  "toast.aaft.waiting_second": "Waiting second player",
+
+  "command.aaft.error.player_only": "This command can only be executed by a player.",
+  "command.aaft.modify.allowedplayers.delete.all": "All authorized players have been removed.",
+  "command.aaft.modify.allowedplayers.delete.other": "This command can only be executed by a player."
 
 }

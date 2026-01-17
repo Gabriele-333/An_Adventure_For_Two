@@ -3,6 +3,8 @@
 
   "toast.aaft.title": "Due giocatori richiesti.",
   "toast.aaft.need_second": "Gioca multiplayer!",
-  "toast.aaft.waiting_second": "Aspettando giocatore 2"
+  "toast.aaft.waiting_second": "Aspettando giocatore 2",
+
+  "command.aaft.error.player_only": "Questo comando può essere eseguito solo da un player."
 
 }
