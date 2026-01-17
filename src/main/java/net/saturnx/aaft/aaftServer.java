@@ -20,9 +20,12 @@ package net.saturnx.aaft;/*
 
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.config.ModConfig;
+import net.saturnx.aaft.config.AAFTServerConfig;
 
 public class aaftServer extends AAFT{
-    public aaftServer(IEventBus modEventBus) {
-        super(modEventBus);
+    public aaftServer(IEventBus modEventBus, ModContainer modContainer) {
+        super(modEventBus, modContainer);
+        modContainer.registerConfig(ModConfig.Type.SERVER, AAFTServerConfig.SPEC);
     }
 }
