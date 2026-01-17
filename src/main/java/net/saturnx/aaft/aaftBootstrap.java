@@ -19,18 +19,19 @@ package net.saturnx.aaft;/*
  */
 
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.loading.FMLEnvironment;
 
 @Mod(AAFT.MOD_ID)
 public class aaftBootstrap {
-    public aaftBootstrap(IEventBus modEventBus) {
+    public aaftBootstrap(IEventBus modEventBus, ModContainer modContainer) {
         switch (FMLEnvironment.dist) {
             case CLIENT -> {
-                new aaftClient(modEventBus);
+                new aaftClient(modEventBus, modContainer);
             }
             case DEDICATED_SERVER -> {
-                new aaftServer(modEventBus);
+                new aaftServer(modEventBus, modContainer);
             }
         }
     }
