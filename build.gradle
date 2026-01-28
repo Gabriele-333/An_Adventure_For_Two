@@ -20,6 +20,10 @@ repositories {
             includeGroup "curse.maven"
         }
     }
+    maven {
+        name = "Illusive Soulworks maven"
+        url = "https://maven.theillusivec4.top/"
+    }
 }
 
 base {
@@ -103,6 +107,8 @@ dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
     implementation "net.gabriele333.gabrielecore:GabrieleCore:${gc_version}"
 
+    implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}"
+
     implementation "curse.maven:jei-238222:7416540"
 
 }
@@ -123,7 +129,8 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             mod_version            : mod_version,
             mod_authors            : mod_authors,
             mod_description        : mod_description,
-            gc_version             : gc_version
+            gc_version             : gc_version,
+            curios_version_range   : curios_version_range
     ]
     inputs.properties replaceProperties
     expand replaceProperties
