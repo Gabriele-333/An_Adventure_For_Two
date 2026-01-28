@@ -18,7 +18,9 @@ package net.saturnx.aaft.server;/*
  * File created on: 12/01/2026
  */
 
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
+import net.saturnx.aaft.config.AAFTServerConfig;
 
 public final class SharedXpState {
 
@@ -30,7 +32,7 @@ public final class SharedXpState {
     public static void start(ServerPlayer dead, ServerPlayer alive, long gameTime) {
         deadPlayer = dead;
         alivePlayer = alive;
-        restoreDeadline = gameTime + (30 * 20); // 30 secondi
+        restoreDeadline = gameTime + (30 * 20);
         pending = true;
     }
 
@@ -54,5 +56,23 @@ public final class SharedXpState {
         deadPlayer = null;
         alivePlayer = null;
         pending = false;
+    }
+
+
+
+    public static boolean areBothDead(MinecraftServer server) {
+        return server.getPlayerList().getPlayers().stream()
+                .filter(p -> !p.isSpectator())
+                .noneMatch(ServerPlayer::isAlive);
+    }
+
+    public static void resetAllXp(MinecraftServer server) {
+        for (ServerPlayer p : server.getPlayerList().getPlayers()) {
+            p.totalExperience = 0;
+            p.experienceLevel = 0;
+            p.experienceProgress = 0f;
+        }
+
+
     }
 }
