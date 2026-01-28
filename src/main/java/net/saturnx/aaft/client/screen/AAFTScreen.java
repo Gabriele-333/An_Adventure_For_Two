@@ -42,6 +42,9 @@ public class AAFTScreen extends AbstractContainerScreen<AAFTMenu> {
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, GUI_TEXTURE);
 
+        int imageWidth = 256;
+        int imageHeight = 192;
+
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
 
