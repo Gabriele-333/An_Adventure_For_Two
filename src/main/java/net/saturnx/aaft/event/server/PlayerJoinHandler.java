@@ -1,4 +1,4 @@
-package net.saturnx.aaft.event;/*
+package net.saturnx.aaft.event.server;/*
  * This file is part of An Adventure For Two.
  * Copyright (c) 2026, SaturnX Studios, All rights reserved.
  *
@@ -30,8 +30,12 @@ import net.minecraft.world.level.GameType;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
+import net.saturnx.aaft.config.AAFTServerConfig;
+import net.saturnx.aaft.data.AAFTPlayerData;
 import net.saturnx.aaft.network.clientbound.ShowToastPacket;
 import net.saturnx.aaft.network.clientbound.StopWaitingToastPacket;
+
+import java.util.UUID;
 
 
 public class PlayerJoinHandler {
@@ -67,7 +71,10 @@ public class PlayerJoinHandler {
                 if (remaining == null) return;
 
                 giveBlindness(remaining);
-                remaining.setGameMode(GameType.ADVENTURE);
+
+                    remaining.setGameMode(GameType.ADVENTURE);
+
+
 
 
 
@@ -89,6 +96,7 @@ public class PlayerJoinHandler {
 
             giveBlindness(p);
             p.setGameMode(GameType.ADVENTURE);
+
 
             if(SingleplayerWorldTracker.worldWasSingleplayer){
                 ClientboundPacket toast = new ShowToastPacket(
@@ -144,6 +152,21 @@ public class PlayerJoinHandler {
             player.connection.disconnect(
                     Component.translatable("message.aaft.reject_join")
             );
+        } else if(server.getPlayerList().getPlayerCount() < 3){
+            AAFTPlayerData data = AAFTPlayerData.get(server);
+            UUID uuid = player.getUUID();
+
+            if (data.isAllowed(uuid)) return;
+
+            if (data.hasFreeSlot()) {
+                data.addPlayer(uuid);
+                return;
+            }
+
+            player.connection.disconnect(
+                    Component.translatable("message.aaft.not_allowed")
+            );
+
         }
     }
 }
