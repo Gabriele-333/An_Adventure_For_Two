@@ -18,11 +18,23 @@ package net.saturnx.aaft;/*
  * File created on: 06/01/2026
  */
 
+
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.neoforge.common.NeoForge;
 
-public class aaftClient extends AAFT{
-    public aaftClient(IEventBus modEventBus) {
-        super(modEventBus);
+
+import net.saturnx.aaft.event.client.GuiEventRender;
+
+
+
+public class aaftClient extends AAFT {
+    public aaftClient(IEventBus modEventBus, ModContainer modContainer) {
+        super(modEventBus, modContainer);
+        NeoForge.EVENT_BUS.register(GuiEventRender.class);
+
+
     }
+
+
 }
