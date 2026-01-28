@@ -1,4 +1,4 @@
-package net.saturnx.aaft.event;/*
+package net.saturnx.aaft.event.server;/*
  * This file is part of An Adventure For Two.
  * Copyright (c) 2026, SaturnX Studios, All rights reserved.
  *
