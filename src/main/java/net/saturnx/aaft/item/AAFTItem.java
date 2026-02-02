@@ -33,7 +33,7 @@ public class AAFTItem {
 
     public static final Supplier<Item> RING = ITEMS.register("ring",
             () -> new Item(new Item.Properties().rarity(Rarity.EPIC).fireResistant()));
-    public static final Supplier<Item> BRACELET = ITEMS.register("bracelet",
+    public static final Supplier<Item> BRACELET = ITEMS.register("friendship_bracelet",
             () -> new Item(new Item.Properties().rarity(Rarity.EPIC).fireResistant()));
     public static final Supplier<Item> COMPASS = ITEMS.register("compass",
             () -> new Item(new Item.Properties().rarity(Rarity.EPIC).fireResistant()));
