@@ -22,10 +22,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
 import net.saturnx.aaft.client.state.ClientXpOverlayState;
-import net.saturnx.aaft.client.screen.AAFTScreen;
+
 
 public class GuiEventRender {
     @SubscribeEvent
