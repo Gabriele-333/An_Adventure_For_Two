@@ -1,4 +1,4 @@
-package net.saturnx.aaft.event.server;/*
+package net.saturnx.aaft.event.server.tick;/*
  * This file is part of An Adventure For Two.
  * Copyright (c) 2026, SaturnX Studios, All rights reserved.
  *
@@ -26,7 +26,7 @@ import net.neoforged.neoforge.network.PacketDistributor;
 import net.saturnx.aaft.network.clientbound.XpRestoreStatusPacket;
 import net.saturnx.aaft.server.SharedXpState;
 
-public class TickEvent {
+public class XpTickEvent {
 
 
 
@@ -79,6 +79,7 @@ public class TickEvent {
         reset(server);
     }
 
+
     /* ---------------- RESET ---------------- */
 
     private static void reset(MinecraftServer server) {
@@ -101,4 +102,6 @@ public class TickEvent {
         to.experienceLevel = from.experienceLevel;
         to.experienceProgress = from.experienceProgress;
     }
+
+
 }
