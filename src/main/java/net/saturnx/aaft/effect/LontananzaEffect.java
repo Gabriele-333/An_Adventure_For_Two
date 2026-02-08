@@ -1,4 +1,5 @@
-package net.saturnx.aaft.client;/*
+package net.saturnx.aaft.effect;
+/*
  * This file is part of An Adventure For Two.
  * Copyright (c) 2026, SaturnX Studios, All rights reserved.
  *
@@ -15,20 +16,15 @@ package net.saturnx.aaft.client;/*
  * You should have received a copy of the GNU Lesser General Public License
  * along with An Adventure For Two.  If not, see <http://www.gnu.org/licenses/lgpl>.
  *
- * File created on: 15/01/2026
+ * File created on: 03/02/2026
  */
 
-import com.mojang.blaze3d.platform.InputConstants;
-import net.minecraft.client.KeyMapping;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
 
+public class LontananzaEffect extends MobEffect {
 
-public class AAFTKeyBindings {
-
-    public static final KeyMapping OPEN_MENU = new KeyMapping(
-            "key.aaft.open_menu", // lang
-            InputConstants.Type.KEYSYM,
-            InputConstants.KEY_G,
-            "key.categories.aaft"
-    );
-
+    public LontananzaEffect() {
+        super(MobEffectCategory.HARMFUL, 0x4B5563);
+    }
 }
