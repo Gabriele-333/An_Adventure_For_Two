@@ -1,4 +1,5 @@
-package net.saturnx.aaft.client.screen;/*
+package net.saturnx.aaft.effect;
+/*
  * This file is part of An Adventure For Two.
  * Copyright (c) 2026, SaturnX Studios, All rights reserved.
  *
@@ -15,27 +16,28 @@ package net.saturnx.aaft.client.screen;/*
  * You should have received a copy of the GNU Lesser General Public License
  * along with An Adventure For Two.  If not, see <http://www.gnu.org/licenses/lgpl>.
  *
- * File created on: 17/01/2026
+ * File created on: 03/02/2026
  */
 
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.effect.MobEffect;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.saturnx.aaft.AAFT;
 
-public class AAFTMenu extends AbstractContainerMenu {
+public final class AAFTEffects {
 
-    public AAFTMenu(int containerId, Inventory playerInventory) {
-        super(AAFTMenus.AAFT_MENU.get(), containerId);
+    public static final DeferredRegister<MobEffect> MOB_EFFECTS =
+            DeferredRegister.create(Registries.MOB_EFFECT, AAFT.MOD_ID);
+
+    public static final DeferredHolder<MobEffect, MobEffect> LONTANANZA =
+            MOB_EFFECTS.register("lontananza", LontananzaEffect::new);
+
+    private AAFTEffects() {
     }
 
-    @Override
-    public ItemStack quickMoveStack(Player player, int i) {
-        return null;
-    }
-
-    @Override
-    public boolean stillValid(Player player) {
-        return true; // Permette sempre l'interazione
+    public static void register(IEventBus eventBus) {
+        MOB_EFFECTS.register(eventBus);
     }
 }
