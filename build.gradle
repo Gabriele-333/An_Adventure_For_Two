@@ -145,7 +145,12 @@ sourceSets.main.resources.srcDir generateModMetadata
 // To avoid having to run "generateModMetadata" manually, make it run on every project reload
 neoForge.ideSyncTask generateModMetadata
 
-// Example configuration to allow publishing using the maven-publish plugin
+tasks.build.dependsOn
+tasks.named('jar').configure {
+    archiveBaseName = "${mod_name}-${minecraft_version}"
+    archiveVersion = "${mod_version}"
+}
+
 publishing {
     publications {
         register('mavenJava', MavenPublication) {
