@@ -29,8 +29,6 @@ import net.saturnx.aaft.client.state.ClientXpOverlayState;
 public class GuiEventRender {
     @SubscribeEvent
     public static void onXpRender(RenderGuiEvent.Pre event) {
-        if (!ClientXpOverlayState.pending) return;
-
         GuiGraphics gfx = event.getGuiGraphics();
         Minecraft mc = Minecraft.getInstance();
 
@@ -38,14 +36,35 @@ public class GuiEventRender {
         int x = width / 2 - 91;
         int y = mc.getWindow().getGuiScaledHeight() - 29;
 
-        gfx.fill(x, y, x + 182, y + 5, 0xAAFF0000);
+        int distance = ClientXpOverlayState.distanceBlocks;
+        int baseTextY = y - 10;
 
-        int seconds = ClientXpOverlayState.remainingTicks / 20;
-        gfx.drawCenteredString(mc.font,
-                Component.literal(seconds + "s"),
-                width / 2,
-                y - 10,
-                0xFF5555
-        );
+        if (ClientXpOverlayState.pending) {
+            gfx.fill(x, y, x + 182, y + 5, 0xAAFF0000);
+
+            int seconds = ClientXpOverlayState.remainingTicks / 20;
+            gfx.drawCenteredString(mc.font,
+                    Component.literal(seconds + "s"),
+                    width / 2,
+                    baseTextY,
+                    0xFF5555
+            );
+            baseTextY -= 10;
+        }
+
+
+
+        if (distance >= 0) {
+            int distanceTextX = width / 2 - 110;
+            if (mc.player != null && !mc.player.getOffhandItem().isEmpty()) {
+                distanceTextX -= 24;
+            }
+            gfx.drawCenteredString(mc.font,
+                    Component.literal(distance + " m"),
+                    distanceTextX,
+                    baseTextY + 24,
+                    0xFFFFFF
+            );
+        }
     }
 }

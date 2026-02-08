@@ -27,6 +27,7 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.saturnx.aaft.network.clientbound.ShowToastPacket;
 import net.saturnx.aaft.network.clientbound.StopWaitingToastPacket;
+import net.saturnx.aaft.network.clientbound.DistanceStatusPacket;
 import net.saturnx.aaft.network.clientbound.XpRestoreStatusPacket;
 
 
@@ -41,6 +42,7 @@ public class aaftNetwork {
         clientbound(registrar, ShowToastPacket.TYPE, ShowToastPacket.STREAM_CODEC);
         clientbound(registrar, StopWaitingToastPacket.TYPE, StopWaitingToastPacket.STREAM_CODEC);
         clientbound(registrar, XpRestoreStatusPacket.TYPE, XpRestoreStatusPacket.STREAM_CODEC);
+        clientbound(registrar, DistanceStatusPacket.TYPE, DistanceStatusPacket.STREAM_CODEC);
 
 
 
