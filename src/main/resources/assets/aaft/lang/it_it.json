@@ -1,10 +1,14 @@
-{
+﻿{
   "message.aaft.reject_join":"Questo mondo può avere solo 2 giocatori.",
 
   "toast.aaft.title": "Due giocatori richiesti.",
   "toast.aaft.need_second": "Gioca multiplayer!",
   "toast.aaft.waiting_second": "Aspettando giocatore 2",
 
-  "command.aaft.error.player_only": "Questo comando può essere eseguito solo da un player."
+  "command.aaft.error.player_only": "Questo comando può essere eseguito solo da un player.",
+
+  "effect.aaft.lontananza": "Lontananza",
+  "death.attack.lontananza": "%1$s e stato consumato dalla lontananza.",
+  "death.attack.lontananza.player": "%1$s e stato consumato dalla lontananza mentre combatteva %2$s."
 
 }
