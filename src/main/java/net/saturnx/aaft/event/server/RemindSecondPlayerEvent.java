@@ -18,7 +18,10 @@ package net.saturnx.aaft.event.server;/*
  * File created on: 06/01/2026
  */
 
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
@@ -36,9 +39,13 @@ public class RemindSecondPlayerEvent {
         int count = server.getPlayerList().getPlayerCount();
 
         if (count == 1) {
-            player.sendSystemMessage(Component.literal(
-                    "Serve ancora un altro giocatore per continuare!"
-            ));
+            Component link = Component.literal("BisectHosting (code: SaturnX)")
+                    .setStyle(Style.EMPTY
+                            .withColor(ChatFormatting.AQUA)
+                            .withUnderlined(true)
+                            .withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL,
+                                    "https://www.bisecthosting.com/saturnx?r=aaft")));
+            player.sendSystemMessage(Component.translatable("chat.aaft.second_player", link));
         }
     }
 }
