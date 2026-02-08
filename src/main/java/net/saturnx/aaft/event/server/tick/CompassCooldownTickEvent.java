@@ -1,4 +1,4 @@
-package net.saturnx.aaft.event.client;/*
+package net.saturnx.aaft.event.server.tick;/*
  * This file is part of An Adventure For Two.
  * Copyright (c) 2026, SaturnX Studios, All rights reserved.
  *
@@ -15,31 +15,29 @@ package net.saturnx.aaft.event.client;/*
  * You should have received a copy of the GNU Lesser General Public License
  * along with An Adventure For Two.  If not, see <http://www.gnu.org/licenses/lgpl>.
  *
- * File created on: 13/01/2026
+ * File created on: 08/02/2026
  */
 
-
-
-import net.neoforged.api.distmarker.Dist;
+import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.event.tick.ServerTickEvent;
+import net.saturnx.aaft.item.AAFTItem;
+import net.saturnx.aaft.item.CompassItem;
 
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
-import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
-import net.saturnx.aaft.client.AAFTKeyBindings;
-import net.saturnx.aaft.client.screen.AAFTMenus;
-import net.saturnx.aaft.client.screen.AAFTScreen;
-
-@EventBusSubscriber(modid = "aaft", bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-public class ClientMenuEvents {
+public class CompassCooldownTickEvent {
 
     @SubscribeEvent
-    public static void registerKeys(RegisterKeyMappingsEvent event) {
-        event.register(AAFTKeyBindings.OPEN_MENU);
-    }
+    public static void onServerTick(ServerTickEvent.Post event) {
+        for (ServerPlayer player : event.getServer().getPlayerList().getPlayers()) {
+            int remaining = CompassItem.getStoredCooldown(player);
+            if (remaining <= 0) continue;
 
-    @SubscribeEvent
-    public static void registerScreens(RegisterMenuScreensEvent event) {
-        event.register(AAFTMenus.AAFT_MENU.get(), AAFTScreen::new);
+            remaining -= 1;
+            CompassItem.setStoredCooldown(player, remaining);
+
+            if (remaining == 0) {
+                player.getCooldowns().removeCooldown(AAFTItem.COMPASS.get());
+            }
+        }
     }
 }
