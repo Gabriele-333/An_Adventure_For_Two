@@ -21,4 +21,5 @@ package net.saturnx.aaft.client.state;/*
 public final class ClientXpOverlayState {
     public static boolean pending = false;
     public static int remainingTicks = 0;
+    public static int distanceBlocks = -1;
 }
