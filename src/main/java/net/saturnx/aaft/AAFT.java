@@ -8,7 +8,11 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.saturnx.aaft.command.AAFTCommandModify;
 import net.saturnx.aaft.event.server.*;
+import net.saturnx.aaft.effect.AAFTEffects;
+import net.saturnx.aaft.event.server.tick.CompassCooldownTickEvent;
+import net.saturnx.aaft.event.server.tick.DistanceTickEvent;
 import net.saturnx.aaft.event.server.tick.HealthTickEvent;
+import net.saturnx.aaft.event.server.tick.LontananzaTickEvent;
 import net.saturnx.aaft.event.server.tick.XpTickEvent;
 import net.saturnx.aaft.event.server.xp.ExperiencePlayerDeathHandler;
 import net.saturnx.aaft.event.server.xp.ExperienceSyncHandler;
@@ -30,13 +34,18 @@ public abstract class AAFT {
         modEventBus.addListener(aaftNetwork::init);
         AAFTItem.register(modEventBus);
         AAFTCreativeTab.register(modEventBus);
+        AAFTEffects.register(modEventBus);
 
 
         NeoForge.EVENT_BUS.register(XpTickEvent.class);
         NeoForge.EVENT_BUS.register(HealthTickEvent.class);
+        NeoForge.EVENT_BUS.register(LontananzaTickEvent.class);
+        NeoForge.EVENT_BUS.register(DistanceTickEvent.class);
+        NeoForge.EVENT_BUS.register(CompassCooldownTickEvent.class);
 
         NeoForge.EVENT_BUS.register(SingleplayerWorldTracker.class);
         NeoForge.EVENT_BUS.register(PlayerJoinHandler.class);
+        NeoForge.EVENT_BUS.register(CompassCooldownEvents.class);
         NeoForge.EVENT_BUS.register(RemindSecondPlayerEvent.class);
         NeoForge.EVENT_BUS.register(ExperienceSyncHandler.class);
         NeoForge.EVENT_BUS.register(ExperiencePlayerDeathHandler.class);
