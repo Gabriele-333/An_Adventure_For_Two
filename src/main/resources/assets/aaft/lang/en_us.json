@@ -1,12 +1,21 @@
 {
   "message.aaft.reject_join":"This world can only have 2 players.",
+  "message.aaft.not_allowed": "You're not allowed to enter this world.",
 
   "toast.aaft.title": "Two Players Required",
   "toast.aaft.need_second": "Play Multiplayer!",
   "toast.aaft.waiting_second": "Waiting second player",
 
+  "chat.aaft.second_player": "You need another player to play in this world. Need a server? Rent one from %s.",
+
   "command.aaft.error.player_only": "This command can only be executed by a player.",
   "command.aaft.modify.allowedplayers.delete.all": "All authorized players have been removed.",
-  "command.aaft.modify.allowedplayers.delete.other": "This command can only be executed by a player."
+  "command.aaft.modify.allowedplayers.delete.other": "This command can only be executed by a player.",
+
+  "effect.aaft.lontananza": "Distance",
+  "death.attack.lontananza": "%1$s was consumed by distance.",
+  "death.attack.lontananza.player": "%1$s was consumed by distance while fighting %2$s."
+
+
 
 }
