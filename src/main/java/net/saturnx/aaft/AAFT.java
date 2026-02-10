@@ -36,6 +36,7 @@ public abstract class AAFT {
         AAFTCreativeTab.register(modEventBus);
         AAFTEffects.register(modEventBus);
 
+        NeoForge.EVENT_BUS.register(AAFT.class);
 
         NeoForge.EVENT_BUS.register(XpTickEvent.class);
         NeoForge.EVENT_BUS.register(HealthTickEvent.class);
@@ -47,6 +48,12 @@ public abstract class AAFT {
         NeoForge.EVENT_BUS.register(PlayerJoinHandler.class);
         NeoForge.EVENT_BUS.register(CompassCooldownEvents.class);
         NeoForge.EVENT_BUS.register(RemindSecondPlayerEvent.class);
+        NeoForge.EVENT_BUS.register(UniqueItemCraftingEvents.class);
+        NeoForge.EVENT_BUS.register(TrustItemExchangeEvent.class);
+        NeoForge.EVENT_BUS.register(TrustHitEvent.class);
+        NeoForge.EVENT_BUS.register(TrustKillEvent.class);
+        NeoForge.EVENT_BUS.register(TrustDragonKillEvent.class);
+        NeoForge.EVENT_BUS.register(TrustRevengeEvent.class);
         NeoForge.EVENT_BUS.register(ExperienceSyncHandler.class);
         NeoForge.EVENT_BUS.register(ExperiencePlayerDeathHandler.class);
 
