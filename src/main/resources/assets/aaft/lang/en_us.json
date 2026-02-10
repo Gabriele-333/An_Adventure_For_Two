@@ -1,6 +1,7 @@
 {
   "message.aaft.reject_join":"This world can only have 2 players.",
   "message.aaft.not_allowed": "You're not allowed to enter this world.",
+  "message.aaft.unique_item_locked": "Another unique item has already been created in this world.",
 
   "toast.aaft.title": "Two Players Required",
   "toast.aaft.need_second": "Play Multiplayer!",

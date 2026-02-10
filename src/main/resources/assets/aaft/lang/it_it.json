@@ -1,5 +1,6 @@
 ﻿{
   "message.aaft.reject_join":"Questo mondo può avere solo 2 giocatori.",
+  "message.aaft.unique_item_locked":"Un altro oggetto unico è già stato creato in questo mondo.",
 
   "toast.aaft.title": "Due giocatori richiesti.",
   "toast.aaft.need_second": "Gioca multiplayer!",
