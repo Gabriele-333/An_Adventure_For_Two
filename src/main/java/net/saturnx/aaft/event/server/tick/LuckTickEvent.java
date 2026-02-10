@@ -29,6 +29,7 @@ import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.saturnx.aaft.item.AAFTItem;
+import net.saturnx.aaft.server.SharedTrustState;
 import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.Collection;
@@ -60,8 +61,9 @@ public class LuckTickEvent {
         boolean p2HasBracelet = hasBraceletEquipped(p2);
 
         if (p1HasBracelet && p2HasBracelet) {
-            applyBonus(p1);
-            applyBonus(p2);
+            int bonusLuck = getTrustLuckBonus();
+            applyBonus(p1, bonusLuck);
+            applyBonus(p2, bonusLuck);
         } else {
             removeBonus(players);
         }
@@ -76,20 +78,29 @@ public class LuckTickEvent {
                 .orElse(false);
     }
 
-    private static void applyBonus(ServerPlayer player) {
+    private static void applyBonus(ServerPlayer player, int bonusLuck) {
         AttributeInstance attr = player.getAttribute(Attributes.LUCK);
         if (attr == null) return;
 
-        if (!attr.hasModifier(BRACELET_BONUS_ID)) {
-            AttributeModifier modifier = new AttributeModifier(
-                    BRACELET_BONUS_ID,
-                    2.0,
-
-                    AttributeModifier.Operation.ADD_VALUE
-            );
-
-            attr.addPermanentModifier(modifier);
+        double bonusAmount = bonusLuck;
+        AttributeModifier existing = attr.getModifier(BRACELET_BONUS_ID);
+        if (existing != null) {
+            if (existing.amount() == bonusAmount) {
+                return;
+            }
+            attr.removeModifier(BRACELET_BONUS_ID);
         }
+
+        if (bonusAmount <= 0.0) {
+            return;
+        }
+
+        AttributeModifier modifier = new AttributeModifier(
+                BRACELET_BONUS_ID,
+                bonusAmount,
+                AttributeModifier.Operation.ADD_VALUE
+        );
+        attr.addPermanentModifier(modifier);
     }
 
     private static void removeBonus(Collection<ServerPlayer> players) {
@@ -101,5 +112,19 @@ public class LuckTickEvent {
                 attr.removeModifier(BRACELET_BONUS_ID);
             }
         }
+    }
+
+    private static int getTrustLuckBonus() {
+        int tick = SharedTrustState.getHighlightedTickIndex();
+        if (tick <= 5) {
+            return 0;
+        }
+        if (tick <= 7) {
+            return 1;
+        }
+        if (tick == 8) {
+            return 2;
+        }
+        return 3;
     }
 }
