@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.saturnx.aaft.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "SplashManagerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
