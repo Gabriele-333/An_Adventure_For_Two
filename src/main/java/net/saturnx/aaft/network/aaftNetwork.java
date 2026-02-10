@@ -25,9 +25,10 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+import net.saturnx.aaft.network.clientbound.DistanceStatusPacket;
 import net.saturnx.aaft.network.clientbound.ShowToastPacket;
 import net.saturnx.aaft.network.clientbound.StopWaitingToastPacket;
-import net.saturnx.aaft.network.clientbound.DistanceStatusPacket;
+import net.saturnx.aaft.network.clientbound.TrustStatusPacket;
 import net.saturnx.aaft.network.clientbound.XpRestoreStatusPacket;
 
 
@@ -43,6 +44,7 @@ public class aaftNetwork {
         clientbound(registrar, StopWaitingToastPacket.TYPE, StopWaitingToastPacket.STREAM_CODEC);
         clientbound(registrar, XpRestoreStatusPacket.TYPE, XpRestoreStatusPacket.STREAM_CODEC);
         clientbound(registrar, DistanceStatusPacket.TYPE, DistanceStatusPacket.STREAM_CODEC);
+        clientbound(registrar, TrustStatusPacket.TYPE, TrustStatusPacket.STREAM_CODEC);
 
 
 
