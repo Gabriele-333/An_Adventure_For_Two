@@ -19,12 +19,17 @@ package net.saturnx.aaft.command;/*
  */
 
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
+import net.neoforged.neoforge.network.PacketDistributor;
 import net.saturnx.aaft.data.AAFTPlayerData;
+import net.saturnx.aaft.data.AAFTTrustItemData;
+import net.saturnx.aaft.network.clientbound.TrustStatusPacket;
+import net.saturnx.aaft.server.SharedTrustState;
 
 public class AAFTCommandModify {
 
@@ -44,6 +49,50 @@ public class AAFTCommandModify {
                                                         .executes(ctx ->
                                                                 deleteOther(ctx.getSource())
                                                         )
+                                                )
+                                        )
+                                )
+                        )
+                        .then(Commands.literal("trust")
+                                .then(Commands.literal("set")
+                                        .then(Commands.argument("value", IntegerArgumentType.integer(
+                                                SharedTrustState.MIN_TRUST,
+                                                SharedTrustState.MAX_TRUST))
+                                                .executes(ctx ->
+                                                        setTrust(ctx.getSource(),
+                                                                IntegerArgumentType.getInteger(ctx, "value"))
+                                                )
+                                        )
+                                )
+                                .then(Commands.literal("add")
+                                        .then(Commands.argument("amount", IntegerArgumentType.integer(1))
+                                                .executes(ctx ->
+                                                        addTrust(ctx.getSource(),
+                                                                IntegerArgumentType.getInteger(ctx, "amount"))
+                                                )
+                                        )
+                                )
+                                .then(Commands.literal("remove")
+                                        .then(Commands.argument("amount", IntegerArgumentType.integer(1))
+                                                .executes(ctx ->
+                                                        removeTrust(ctx.getSource(),
+                                                                IntegerArgumentType.getInteger(ctx, "amount"))
+                                                )
+                                        )
+                                )
+                        )
+                        .then(Commands.literal("tech")
+                                .then(Commands.literal("trust")
+                                        .then(Commands.literal("get")
+                                                .executes(ctx ->
+                                                        getTrust(ctx.getSource())
+                                                )
+                                        )
+                                )
+                                .then(Commands.literal("vars")
+                                        .then(Commands.literal("trust_item")
+                                                .executes(ctx ->
+                                                        getTrustItem(ctx.getSource())
                                                 )
                                         )
                                 )
@@ -85,5 +134,85 @@ public class AAFTCommandModify {
         );
 
         return 1;
+    }
+
+    private static int setTrust(CommandSourceStack source, int value) {
+        int clamped = Math.max(SharedTrustState.MIN_TRUST, Math.min(SharedTrustState.MAX_TRUST, value));
+        int current = SharedTrustState.getTrust();
+        if (clamped != current) {
+            if (clamped > current) {
+                SharedTrustState.increaseTrust(clamped - current);
+            } else {
+                SharedTrustState.decreaseTrust(current - clamped);
+            }
+        }
+
+        broadcastTrust(source.getServer());
+        if (clamped != current) {
+            source.getServer().getPlayerList().broadcastSystemMessage(
+                    Component.literal("Trust set: " + SharedTrustState.getTrust()),
+                    false
+            );
+        }
+        source.sendSuccess(() -> Component.literal("Trust set to " + SharedTrustState.getTrust()), true);
+        return 1;
+    }
+
+    private static int addTrust(CommandSourceStack source, int amount) {
+        int before = SharedTrustState.getTrust();
+        SharedTrustState.increaseTrust(amount);
+        int after = SharedTrustState.getTrust();
+        broadcastTrust(source.getServer());
+        int delta = after - before;
+        if (delta != 0) {
+            source.getServer().getPlayerList().broadcastSystemMessage(
+                    Component.literal("Trust +" + delta),
+                    false
+            );
+        }
+        source.sendSuccess(() -> Component.literal("Trust increased to " + SharedTrustState.getTrust()), true);
+        return 1;
+    }
+
+    private static int removeTrust(CommandSourceStack source, int amount) {
+        int before = SharedTrustState.getTrust();
+        SharedTrustState.decreaseTrust(amount);
+        int after = SharedTrustState.getTrust();
+        broadcastTrust(source.getServer());
+        int delta = after - before;
+        if (delta != 0) {
+            source.getServer().getPlayerList().broadcastSystemMessage(
+                    Component.literal("Trust " + delta),
+                    false
+            );
+        }
+        source.sendSuccess(() -> Component.literal("Trust decreased to " + SharedTrustState.getTrust()), true);
+        return 1;
+    }
+
+    private static int getTrust(CommandSourceStack source) {
+        source.sendSuccess(() -> Component.literal("Trust: " + SharedTrustState.getTrust()), false);
+        return 1;
+    }
+
+    private static int getTrustItem(CommandSourceStack source) {
+        MinecraftServer server = source.getServer();
+        AAFTTrustItemData data = AAFTTrustItemData.get(server);
+        long currentTick = server.overworld().getGameTime();
+        long remainingTicks = Math.max(0L, data.getCooldownEndTick() - currentTick);
+        String cooldown = remainingTicks > 0L
+                ? ((remainingTicks + 19L) / 20L) + "s"
+                : "ready";
+        source.sendSuccess(
+                () -> Component.literal("trust_item: " + data.getTrustItem() + " (cooldown: " + cooldown + ")"),
+                false
+        );
+        return 1;
+    }
+
+    private static void broadcastTrust(MinecraftServer server) {
+        PacketDistributor.sendToAllPlayers(
+                new TrustStatusPacket(SharedTrustState.getTrust())
+        );
     }
 }
