@@ -34,6 +34,8 @@ import net.saturnx.aaft.config.AAFTServerConfig;
 import net.saturnx.aaft.data.AAFTPlayerData;
 import net.saturnx.aaft.network.clientbound.ShowToastPacket;
 import net.saturnx.aaft.network.clientbound.StopWaitingToastPacket;
+import net.saturnx.aaft.network.clientbound.TrustStatusPacket;
+import net.saturnx.aaft.server.SharedTrustState;
 
 import java.util.UUID;
 
@@ -125,6 +127,10 @@ public class PlayerJoinHandler {
                 PacketDistributor.sendToPlayer(p, stopToast);
             }
         }
+
+        PacketDistributor.sendToAllPlayers(
+                new TrustStatusPacket(SharedTrustState.getTrust())
+        );
     }
 
     private static void giveBlindness(Player player) {
