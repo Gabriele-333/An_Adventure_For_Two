@@ -20,6 +20,7 @@ package net.saturnx.aaft.event.server.xp;/*
 
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.event.entity.living.LivingExperienceDropEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.saturnx.aaft.network.clientbound.XpRestoreStatusPacket;
@@ -27,6 +28,14 @@ import net.saturnx.aaft.server.SharedXpState;
 
 public class
 ExperiencePlayerDeathHandler {
+    @SubscribeEvent
+    public static void onPlayerXpDrop(LivingExperienceDropEvent event) {
+        if (!(event.getEntity() instanceof ServerPlayer)) {
+            return;
+        }
+        event.setDroppedExperience(0);
+    }
+
     @SubscribeEvent
     public static void onPlayerDeath(PlayerEvent.PlayerRespawnEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer dead)) return;
