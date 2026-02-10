@@ -29,6 +29,7 @@ import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.saturnx.aaft.item.AAFTItem;
+import net.saturnx.aaft.server.SharedTrustState;
 import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.Collection;
@@ -60,8 +61,9 @@ public class HealthTickEvent {
         boolean p2HasRing = hasRingEquipped(p2);
 
         if (p1HasRing && p2HasRing) {
-            applyBonus(p1);
-            applyBonus(p2);
+            int bonusHearts = getTrustBonusHearts();
+            applyBonus(p1, bonusHearts);
+            applyBonus(p2, bonusHearts);
         } else {
             removeBonus(players);
         }
@@ -76,19 +78,25 @@ public class HealthTickEvent {
                 .orElse(false);
     }
 
-    private static void applyBonus(ServerPlayer player) {
+    private static void applyBonus(ServerPlayer player, int bonusHearts) {
         AttributeInstance attr = player.getAttribute(Attributes.MAX_HEALTH);
         if (attr == null) return;
 
-        if (!attr.hasModifier(RING_BONUS_ID)) {
-            AttributeModifier modifier = new AttributeModifier(
-                    RING_BONUS_ID,
-                    10.0,
-                    AttributeModifier.Operation.ADD_VALUE
-            );
-
-            attr.addPermanentModifier(modifier);
+        double bonusAmount = bonusHearts * 2.0;
+        AttributeModifier existing = attr.getModifier(RING_BONUS_ID);
+        if (existing != null) {
+            if (existing.amount() == bonusAmount) {
+                return;
+            }
+            attr.removeModifier(RING_BONUS_ID);
         }
+
+        AttributeModifier modifier = new AttributeModifier(
+                RING_BONUS_ID,
+                bonusAmount,
+                AttributeModifier.Operation.ADD_VALUE
+        );
+        attr.addPermanentModifier(modifier);
     }
     private static void removeBonus(
             Collection<ServerPlayer> players) {
@@ -106,4 +114,20 @@ public class HealthTickEvent {
         }
     }
 
+    private static int getTrustBonusHearts() {
+        int tick = SharedTrustState.getHighlightedTickIndex();
+        if (tick <= 2) {
+            return 1;
+        }
+        if (tick <= 4) {
+            return 2;
+        }
+        if (tick <= 6) {
+            return 3;
+        }
+        if (tick <= 8) {
+            return 4;
+        }
+        return 5;
+    }
 }
