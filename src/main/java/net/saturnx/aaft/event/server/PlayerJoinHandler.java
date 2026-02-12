@@ -21,26 +21,31 @@ package net.saturnx.aaft.event.server;/*
 
 import net.gabriele333.gabrielecore.network.ClientboundPacket;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameType;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
-import net.saturnx.aaft.config.AAFTServerConfig;
 import net.saturnx.aaft.data.AAFTPlayerData;
 import net.saturnx.aaft.network.clientbound.ShowToastPacket;
 import net.saturnx.aaft.network.clientbound.StopWaitingToastPacket;
 import net.saturnx.aaft.network.clientbound.TrustStatusPacket;
 import net.saturnx.aaft.server.SharedTrustState;
+import vazkii.patchouli.api.PatchouliAPI;
 
 import java.util.UUID;
 
 
 public class PlayerJoinHandler {
+    private static final String FIRST_BOOK_KEY = "aaft_received_guide_book";
+    private static final ResourceLocation GUIDE_BOOK_ID =
+            ResourceLocation.fromNamespaceAndPath("aaft", "adventure_for_two");
 
 
     @SubscribeEvent
@@ -158,14 +163,19 @@ public class PlayerJoinHandler {
             player.connection.disconnect(
                     Component.translatable("message.aaft.reject_join")
             );
+            return;
         } else if(server.getPlayerList().getPlayerCount() < 3){
             AAFTPlayerData data = AAFTPlayerData.get(server);
             UUID uuid = player.getUUID();
 
-            if (data.isAllowed(uuid)) return;
+            if (data.isAllowed(uuid)) {
+                giveGuideBookOnce(player);
+                return;
+            }
 
             if (data.hasFreeSlot()) {
                 data.addPlayer(uuid);
+                giveGuideBookOnce(player);
                 return;
             }
 
@@ -174,5 +184,23 @@ public class PlayerJoinHandler {
             );
 
         }
+    }
+
+    private static void giveGuideBookOnce(ServerPlayer player) {
+        var persistent = player.getPersistentData();
+        if (persistent.getBoolean(FIRST_BOOK_KEY)) {
+            return;
+        }
+
+        ItemStack guideBook = PatchouliAPI.get().getBookStack(GUIDE_BOOK_ID);
+        if (guideBook.isEmpty()) {
+            return;
+        }
+
+        if (!player.getInventory().add(guideBook)) {
+            player.drop(guideBook, false);
+        }
+
+        persistent.putBoolean(FIRST_BOOK_KEY, true);
     }
 }

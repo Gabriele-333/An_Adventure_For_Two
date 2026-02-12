@@ -26,14 +26,18 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.saturnx.aaft.damage.AAFTDamageTypes;
 import net.saturnx.aaft.effect.AAFTEffects;
+import net.saturnx.aaft.server.SharedTrustState;
 
 import java.util.Collection;
 import java.util.List;
 
 public class LontananzaTickEvent {
 
-    private static final double EFFECT_DISTANCE_SQR = 50.0 * 50.0;
-    private static final double DAMAGE_DISTANCE_SQR = 75.0 * 75.0;
+    private static final double BASE_EFFECT_DISTANCE = 50.0;
+    private static final double BASE_DAMAGE_DISTANCE = 75.0;
+    private static final double STEP_DISTANCE = 20.0;
+    private static final double MAX_EFFECT_DISTANCE = 900.0;
+    private static final double MAX_DAMAGE_DISTANCE = 1000.0;
     private static final int DAMAGE_INTERVAL_TICKS = 20;
     private static final float DAMAGE_AMOUNT = 1.0F;
 
@@ -52,14 +56,19 @@ public class LontananzaTickEvent {
 
         double distanceSqr = getDistanceSqr(p1, p2);
 
-        if (distanceSqr > EFFECT_DISTANCE_SQR) {
+        double effectDistance = getEffectDistance(SharedTrustState.getHighlightedTickIndex());
+        double damageDistance = getDamageDistance(SharedTrustState.getHighlightedTickIndex());
+        double effectDistanceSqr = effectDistance * effectDistance;
+        double damageDistanceSqr = damageDistance * damageDistance;
+
+        if (distanceSqr > effectDistanceSqr) {
             applyEffect(p1);
             applyEffect(p2);
         } else {
             removeEffect(players);
         }
 
-        if (distanceSqr > DAMAGE_DISTANCE_SQR && (server.getTickCount() % DAMAGE_INTERVAL_TICKS == 0)) {
+        if (distanceSqr > damageDistanceSqr && (server.getTickCount() % DAMAGE_INTERVAL_TICKS == 0)) {
             damagePlayer(p1);
             damagePlayer(p2);
         }
@@ -88,5 +97,25 @@ public class LontananzaTickEvent {
         }
         DamageSource source = player.level().damageSources().source(AAFTDamageTypes.LONTANANZA);
         player.hurt(source, DAMAGE_AMOUNT);
+    }
+
+    private static double getEffectDistance(int trustTick) {
+        if (trustTick >= 9) {
+            return MAX_EFFECT_DISTANCE;
+        }
+        if (trustTick <= 2) {
+            return BASE_EFFECT_DISTANCE;
+        }
+        return BASE_EFFECT_DISTANCE + (trustTick - 2) * STEP_DISTANCE;
+    }
+
+    private static double getDamageDistance(int trustTick) {
+        if (trustTick >= 9) {
+            return MAX_DAMAGE_DISTANCE;
+        }
+        if (trustTick <= 2) {
+            return BASE_DAMAGE_DISTANCE;
+        }
+        return BASE_DAMAGE_DISTANCE + (trustTick - 2) * STEP_DISTANCE;
     }
 }
