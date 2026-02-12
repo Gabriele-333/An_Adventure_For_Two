@@ -1,0 +1,6 @@
+{
+  "name": "Admin",
+  "description": "Commands to manage player access and trust.",
+  "icon": "minecraft:command_block",
+  "sortnum": 3
+}

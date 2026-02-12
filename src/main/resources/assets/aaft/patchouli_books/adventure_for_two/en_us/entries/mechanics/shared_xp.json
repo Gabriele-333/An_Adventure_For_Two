@@ -1,0 +1,32 @@
+﻿{
+  "name": "Shared XP",
+  "category": "aaft:mechanics",
+  "icon": "minecraft:experience_bottle",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Shared XP exists to prevent progression drift between partners. With exactly two active players, XP gained by one is mirrored to the other so the duo remains aligned in long-term growth."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "If only one player is active, XP gain is blocked. This prevents solo farming while the partner is absent and preserves the cooperative progression model of the world."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "When one partner dies, dropped XP is suppressed and a 30 second restore timer starts for the dead player. During this pending window, restore status is visible in the HUD."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "If the alive partner survives the full window, dead player XP is restored to match the alive partner state. The system rewards stable recovery instead of immediate panic re-engagement."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "If the alive partner dies during pending restore, both players are reset to 0 XP. This is intentionally harsh and turns the pending phase into a shared responsibility checkpoint."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Recommended execution:$() when pending starts, stop overextending, stabilize position, and secure regroup. $(italic)In AAFT, preserving the pair is usually stronger than forcing one more fight.$()"
+    }
+  ]
+}

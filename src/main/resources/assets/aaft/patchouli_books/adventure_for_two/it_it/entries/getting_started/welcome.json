@@ -1,0 +1,33 @@
+﻿{
+  "name": "Benvenuto",
+  "category": "aaft:getting_started",
+  "icon": "aaft:compass",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)An Adventure For Two$() e progettata come esperienza cooperativa reale. Il mondo e bilanciato sulla coppia, non sul singolo, quindi quasi tutte le meccaniche premiano coordinazione e puniscono la separazione."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Ogni mondo salva solo due UUID autorizzati. Non e una semplice opzione server: e una regola di design che mantiene la progressione personale, stabile e centrata sulla stessa coppia dall inizio alla fine."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Se un partner e offline, la run viene messa in pausa per l altro con cecita e modalita AVVENTURA. L obiettivo e chiaro: nessuna progressione significativa avviene in solitaria mentre il team e diviso."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Le prime ore decidono quasi sempre la run. Restate vicini, fissate punti di ritrovo e impostate obiettivi brevi condivisi prima di percorsi lunghi. In AAFT il ritmo pulito vale piu della corsa disordinata."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Una routine pratica aiuta molto: un giocatore apre la strada, l altro protegge fallback e risorse, poi invertite i ruoli con regolarita. La rotazione mantiene entrambi informati e riduce errori evitabili."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "aaft:guide_book",
+      "text": "Questa guida si crafta con Libro + Bussola AAFT. Tienila sempre disponibile: soglie distanza, fiducia, finestre di cooldown e scaling oggetti influenzano direttamente la sopravvivenza."
+    }
+  ]
+}

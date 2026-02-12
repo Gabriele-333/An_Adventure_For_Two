@@ -1,12 +1,23 @@
 ﻿{
   "message.aaft.reject_join":"Questo mondo può avere solo 2 giocatori.",
+  "message.aaft.not_allowed": "Non sei autorizzato a entrare in questo mondo.",
   "message.aaft.unique_item_locked":"Un altro oggetto unico è già stato creato in questo mondo.",
 
   "toast.aaft.title": "Due giocatori richiesti.",
   "toast.aaft.need_second": "Gioca multiplayer!",
   "toast.aaft.waiting_second": "Aspettando giocatore 2",
 
+  "chat.aaft.second_player": "Hai bisogno di un altro giocatore per giocare in questo mondo. Ti serve un server? Noleggiane uno da %s.",
+
   "command.aaft.error.player_only": "Questo comando può essere eseguito solo da un player.",
+  "command.aaft.modify.allowedplayers.delete.all": "Tutti i giocatori autorizzati sono stati rimossi.",
+  "command.aaft.modify.allowedplayers.delete.other": "L'altro giocatore autorizzato è stato rimosso.",
+
+  "creativetab.aaft_creative_tab": "An Adventure For Two",
+
+  "item.aaft.ring": "Anello",
+  "item.aaft.friendship_bracelet": "Bracciale dell'amicizia",
+  "item.aaft.compass": "Bussola",
 
   "effect.aaft.lontananza": "Lontananza",
   "death.attack.lontananza": "%1$s e stato consumato dalla lontananza.",

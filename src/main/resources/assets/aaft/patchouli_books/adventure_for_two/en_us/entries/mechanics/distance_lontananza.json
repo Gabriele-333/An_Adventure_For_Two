@@ -1,0 +1,32 @@
+﻿{
+  "name": "Distance & Lontananza",
+  "category": "aaft:mechanics",
+  "icon": "aaft:compass",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "AAFT tracks partner distance continuously. If players are in different dimensions, distance is treated as maximum. In practical terms, the system considers the pair critically separated until regroup."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Crossing the effect threshold applies Lontananza to both players. Crossing the damage threshold applies continuous pressure: both players take 1 damage per second until distance returns to safe range."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Threshold scaling is strict and trust-dependent: ticks 1-2 start at effect 50 and damage 75. From tick 3 to tick 8, both thresholds gain +20 blocks per level. Tick 9 jumps to effect 900 and damage 1000."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Practical translation: low trust demands close movement and frequent regroup; high trust allows wider split play, but only with planned timing and active communication."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Bond Compass is your recovery lever when distance control starts collapsing. Use it to close routing mistakes before passive damage turns a navigation issue into a wipe risk."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Rule of execution:$() if position awareness is breaking, stop pushing objectives and regroup first. In AAFT, controlled reset is usually stronger than stubborn forward momentum."
+    }
+  ]
+}

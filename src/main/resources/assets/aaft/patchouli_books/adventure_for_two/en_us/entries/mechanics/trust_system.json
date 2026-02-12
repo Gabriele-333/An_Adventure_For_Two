@@ -1,0 +1,32 @@
+﻿{
+  "name": "Trust System",
+  "category": "aaft:mechanics",
+  "icon": "minecraft:amethyst_shard",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Trust is the core hidden economy of AAFT. It is shared by both players, ranges from 0 to 127, and starts at 64. This value directly controls safe distance limits and the strength of pair-item bonuses."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Positive events are concrete and limited by cooldown logic. Valid partner item exchanges build progress; each exchange has a 45 second window, and every 10 valid exchanges grant $(bold)+5$() trust. Dragon kill with both valid players in The End grants $(bold)+24$()."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "A successful revenge objective grants $(bold)+8$() trust: if one partner is killed by an entity, and the other kills that same entity in the valid flow, trust increases. This also uses internal timing to prevent abuse loops."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Negative events are equally strict. Valid PVP hits build penalty progress with a 20 second window; every 5 valid hits cause $(bold)-10$() trust. Killing your partner in PVP applies an immediate $(bold)-20$()."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "From a strategy perspective, treat trust as shared currency. If you burn it through chaos and friendly fire, every system becomes less forgiving. If you protect it, exploration and combat both become more stable."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(italic)Common failure pattern:$() emotional or uncoordinated play during tense moments. In AAFT, discipline and communication are as important as gear quality."
+    }
+  ]
+}

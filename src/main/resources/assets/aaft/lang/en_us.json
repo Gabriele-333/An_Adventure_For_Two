@@ -13,6 +13,12 @@
   "command.aaft.modify.allowedplayers.delete.all": "All authorized players have been removed.",
   "command.aaft.modify.allowedplayers.delete.other": "This command can only be executed by a player.",
 
+  "creativetab.aaft_creative_tab": "An Adventure For Two",
+
+  "item.aaft.ring": "Love Ring",
+  "item.aaft.friendship_bracelet": "Friendship Bracelet",
+  "item.aaft.compass": "Compass",
+
   "effect.aaft.lontananza": "Distance",
   "death.attack.lontananza": "%1$s was consumed by distance.",
   "death.attack.lontananza.player": "%1$s was consumed by distance while fighting %2$s."

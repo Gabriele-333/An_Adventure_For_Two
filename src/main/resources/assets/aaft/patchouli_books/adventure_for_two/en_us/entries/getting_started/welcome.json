@@ -1,0 +1,33 @@
+﻿{
+  "name": "Welcome",
+  "category": "aaft:getting_started",
+  "icon": "aaft:compass",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)An Adventure For Two$() is built as a true co-op experience. The world is balanced around the pair, not the solo player, so most systems reward coordination and punish separation."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Each world stores only two authorized UUIDs. This is a design rule, not a server toggle: it keeps progression personal, stable, and focused on one duo from start to finish."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "If one partner is offline, the run is paused for the other player with blindness and ADVENTURE mode. The goal is simple: no meaningful progression happens alone while the team is split."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Early game is where most runs are won or lost. Stay close, set short shared objectives, and define rally points before long routes. Clean rhythm beats fast chaos in AAFT."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "A practical routine helps a lot: one player opens paths, the other secures fallback and supplies, then swap roles regularly. Role rotation keeps both players informed and reduces avoidable mistakes."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "aaft:guide_book",
+      "text": "Craft this guide with Book + AAFT Compass. Keep it available during the run: distance thresholds, trust behavior, cooldown windows, and item scaling have direct impact on survival."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+﻿{
+  "name": "Distanza e Lontananza",
+  "category": "aaft:mechanics",
+  "icon": "aaft:compass",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "AAFT misura la distanza tra partner in modo continuo. Se i giocatori sono in dimensioni diverse, la distanza viene trattata come massima. In pratica il sistema considera la coppia in separazione critica finche non avviene il regroup."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Quando superi la soglia effetto, entrambi ricevono Lontananza. Quando superi la soglia danno, entrambi entrano in pressione continua: 1 danno al secondo finche non torni nella finestra sicura."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "La scala soglie e rigida e dipende dalla fiducia: tick 1-2 partono da effetto 50 e danno 75. Dal tick 3 al tick 8 entrambe le soglie crescono di +20 blocchi per livello. Al tick 9 si arriva a effetto 900 e danno 1000."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Tradotto in gioco: con fiducia bassa devi muoverti compatto e fare regroup frequenti; con fiducia alta puoi permetterti split piu ampi, ma solo con tempi pianificati e comunicazione attiva."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "La Bussola di Legame e la leva principale di recupero quando il controllo distanza inizia a crollare. Usala per correggere errori di routing prima che il danno passivo trasformi un errore di navigazione in rischio wipe."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Regola esecutiva:$() se perdi awareness della posizione reciproca, interrompi la push sugli obiettivi e fai regroup prima. In AAFT un reset controllato e quasi sempre migliore di un avanzamento ostinato."
+    }
+  ]
+}

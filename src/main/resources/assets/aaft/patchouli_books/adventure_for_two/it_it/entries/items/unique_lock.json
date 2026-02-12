@@ -1,0 +1,28 @@
+﻿{
+  "name": "Scelta Unica del Mondo",
+  "category": "aaft:items",
+  "icon": "minecraft:tripwire_hook",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Anello, Bracciale e Bussola non sono tre pickup indipendenti. Sono tre percorsi mondiali mutuamente esclusivi, e il primo craftato definisce l identita attiva di quel mondo."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Se provi a craftare un percorso diverso in seguito, il risultato viene rimosso e i materiali rimborsati. Il sistema evita swap di identita a meta run e mantiene progressione coerente."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Questo blocco e design intenzionale, non restrizione casuale. Le scelte iniziali devono avere conseguenze lunghe, quindi pianificare il primo craft unico in coppia conta moltissimo."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Orientamento rapido: $(bold)Anello$() per sopravvivenza, $(bold)Bracciale$() per costanza nel lungo periodo, $(bold)Bussola$() per mobilita e controllo recupero."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(italic)Errore comune:$() scegliere d impulso invece che per stile di team. Il percorso migliore e quello che la coppia esegue bene per molte ore, non quello piu forte sulla carta."
+    }
+  ]
+}

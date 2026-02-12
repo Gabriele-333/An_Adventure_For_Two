@@ -1,0 +1,28 @@
+﻿{
+  "name": "Comandi",
+  "category": "aaft:admin",
+  "icon": "minecraft:command_block",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Questa sezione e dedicata ad amministrazione e debug, non all uso normale di progressione. I comandi principali sono $(bold)/aaft modify AllowedPlayers delete all$(), $(bold)/aaft modify AllowedPlayers delete other$(), $(bold)/aaft trust set <value>$(), $(bold)/aaft trust add <amount>$() e $(bold)/aaft trust remove <amount>$()."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "I comandi modify controllano gli slot autorizzati del mondo. Usa delete other quando devi ruotare un solo partner in sicurezza; lascia delete all ai reset completi e alla manutenzione amministrativa esplicita."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "I comandi trust sono ideali per test, bilanciamento e setup eventi. Permettono stati fiducia deterministici utili per validare comportamento distanza, scaling bonus e feedback UI."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Per ispezione tecnica usa $(bold)/aaft tech trust get$() e $(bold)/aaft tech vars trust_item$(). Questi mostrano stato interno di progressione e cooldown senza alterare da soli le regole gameplay."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(italic)Best practice:$() dopo i test, riporta il mondo in condizioni pulite di progressione prima di continuare il gioco normale. Override admin persistenti falsano bilanciamento e aspettative giocatore."
+    }
+  ]
+}

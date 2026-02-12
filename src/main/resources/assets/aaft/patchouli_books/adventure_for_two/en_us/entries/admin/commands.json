@@ -1,0 +1,28 @@
+﻿{
+  "name": "Commands",
+  "category": "aaft:admin",
+  "icon": "minecraft:command_block",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "This section is for administration and debugging, not normal progression use. Core commands are $(bold)/aaft modify AllowedPlayers delete all$(), $(bold)/aaft modify AllowedPlayers delete other$(), $(bold)/aaft trust set <value>$(), $(bold)/aaft trust add <amount>$(), and $(bold)/aaft trust remove <amount>$()."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Modify commands control world authorization slots. Use delete other when rotating one partner safely; reserve delete all for full access resets and explicit administrative maintenance."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Trust commands are best used for tests, balancing checks, and event setups. They let you set deterministic trust states for validating distance behavior, bonus scaling, and UI feedback."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "For technical inspection use $(bold)/aaft tech trust get$() and $(bold)/aaft tech vars trust_item$(). These expose internal progression and cooldown state without changing gameplay rules by themselves."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(italic)Best practice:$() after testing, return the world to clean progression conditions before continuing normal play. Persistent admin overrides can invalidate balancing and player expectations."
+    }
+  ]
+}

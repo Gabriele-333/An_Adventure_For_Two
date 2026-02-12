@@ -1,0 +1,11 @@
+{
+  "name": "An Adventure For Two",
+  "landing_text": "Welcome to the in-game guide for AAFT. Here you can find all rules, systems and item details.",
+  "subtitle": "Official In-Game Guide",
+  "use_resource_pack": true,
+  "version": 1,
+  "model": "patchouli:book_blue",
+  "creative_tab": "minecraft:tools_and_utilities",
+  "show_progress": false,
+  "use_blocky_font": false
+}

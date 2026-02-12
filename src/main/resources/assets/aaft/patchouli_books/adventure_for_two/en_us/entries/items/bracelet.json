@@ -1,0 +1,31 @@
+﻿{
+  "name": "Friendship Bracelet",
+  "category": "aaft:items",
+  "icon": "aaft:friendship_bracelet",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "aaft:friendship_bracelet",
+      "title": "Friendship Bracelet",
+      "text": "Friendship Bracelet is the consistency path for pair progression. Equip it in the Curios bracelet slot; like Ring, it activates only when both partners wear it together."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "aaft:friendship_bracelet",
+      "text": "Luck scaling by trust tick is: 1-5 = +0, 6-7 = +1, 8 = +2, 9 = +3. It is not an early spike item; it grows with trust maturity."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Bracelet excels in medium and long sessions where stable outcomes matter more than short explosive peaks. It smooths progression and lowers dependence on single high-roll moments."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Teams that play structured routes, disciplined regroups, and clean objective pacing usually get the most value here. Bracelet rewards process quality more than improvisation."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(italic)If your duo values reliability over spectacle, Bracelet scales extremely well.$() It becomes stronger the more consistent your shared behavior is."
+    }
+  ]
+}

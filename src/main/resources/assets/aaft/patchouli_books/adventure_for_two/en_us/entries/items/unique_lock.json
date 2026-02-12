@@ -1,0 +1,28 @@
+﻿{
+  "name": "World Unique Choice",
+  "category": "aaft:items",
+  "icon": "minecraft:tripwire_hook",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Ring, Bracelet, and Compass are not three independent pickups. They are three mutually exclusive world paths, and the first one crafted defines the active identity of that world."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "If you attempt to craft a different path later, the crafted result is removed and ingredients are refunded. The system prevents mid-run identity swaps and keeps progression coherent."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "This lock is intentional design, not arbitrary restriction. Early choices should have long consequences, so team planning before first unique craft matters a lot."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Quick orientation: $(bold)Ring$() for survivability, $(bold)Bracelet$() for long-term consistency, $(bold)Compass$() for mobility and recovery control."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(italic)Common mistake:$() picking by impulse instead of team style. Best path is the one your duo can execute cleanly for many hours, not the one that looks strongest on paper."
+    }
+  ]
+}

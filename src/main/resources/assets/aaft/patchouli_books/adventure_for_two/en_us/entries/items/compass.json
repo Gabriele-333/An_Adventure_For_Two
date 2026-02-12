@@ -1,0 +1,31 @@
+﻿{
+  "name": "Bond Compass",
+  "category": "aaft:items",
+  "icon": "aaft:compass",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "aaft:compass",
+      "title": "Compass",
+      "text": "Bond Compass is the strongest mobility recovery tool in the mod. Right click teleports you to your partner, including cross-dimension use when both players are online."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "aaft:compass",
+      "text": "After use, Compass has a 30 second cooldown. This is intentional: it is not infinite mobility, it is controlled recovery that still requires planning and timing."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Use Compass to close navigation errors, recover from unsafe split states, and break dangerous distance chains before Lontananza pressure converts into direct wipe risk."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "At high level, Compass is map control: one partner can anchor safety while the other scouts with bounded risk. The item creates tempo if your calls are clean."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Recommended routine:$() call every Compass use in voice, especially during combat or dimension split. Timing clarity prevents overlap, panic use, and wasted cooldown cycles."
+    }
+  ]
+}

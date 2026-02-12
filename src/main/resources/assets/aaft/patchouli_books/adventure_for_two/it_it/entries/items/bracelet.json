@@ -1,0 +1,31 @@
+﻿{
+  "name": "Bracciale dell Amicizia",
+  "category": "aaft:items",
+  "icon": "aaft:friendship_bracelet",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "aaft:friendship_bracelet",
+      "title": "Bracciale dell Amicizia",
+      "text": "Il Bracciale dell Amicizia e il percorso della costanza per la progressione di coppia. Si equipaggia nello slot Curios bracelet; come l Anello si attiva solo se entrambi lo indossano insieme."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "aaft:friendship_bracelet",
+      "text": "La scala fortuna per tick fiducia e: 1-5 = +0, 6-7 = +1, 8 = +2, 9 = +3. Non e un oggetto da picco iniziale; cresce con la maturita della fiducia."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Il Bracciale rende al massimo nelle sessioni medie e lunghe, dove conta piu l esito stabile del picco esplosivo breve. Smussa la progressione e riduce dipendenza da singoli high-roll."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "I team con route strutturate, regroup disciplinati e ritmo obiettivi pulito ottengono il valore migliore. Il Bracciale premia la qualita del processo piu dell improvvisazione."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(italic)Se la tua coppia preferisce affidabilita allo spettacolo, il Bracciale scala in modo eccellente.$() Diventa piu forte quanto piu il vostro comportamento condiviso e coerente."
+    }
+  ]
+}

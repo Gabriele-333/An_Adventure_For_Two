@@ -1,0 +1,31 @@
+﻿{
+  "name": "Bussola di Legame",
+  "category": "aaft:items",
+  "icon": "aaft:compass",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "aaft:compass",
+      "title": "Bussola",
+      "text": "La Bussola di Legame e lo strumento di recupero mobilita piu forte della mod. Click destro ti teletrasporta dal partner, anche tra dimensioni, se entrambi i giocatori sono online."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "aaft:compass",
+      "text": "Dopo l uso, la Bussola ha cooldown di 30 secondi. E intenzionale: non e mobilita infinita, e recupero controllato che richiede comunque pianificazione e timing."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Usa la Bussola per chiudere errori di navigazione, recuperare split pericolosi e spezzare catene distanza rischiose prima che la pressione di Lontananza diventi rischio wipe diretto."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "A livello avanzato la Bussola e controllo mappa: un partner ancora sicurezza mentre l altro esplora con rischio limitato. L oggetto crea tempo se le chiamate sono pulite."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Routine consigliata:$() chiama sempre in voce ogni uso Bussola, soprattutto in combattimento o split dimensionale. La chiarezza sul timing evita overlap, panic use e cooldown sprecati."
+    }
+  ]
+}

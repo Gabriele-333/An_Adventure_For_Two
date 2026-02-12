@@ -1,0 +1,31 @@
+﻿{
+  "name": "Love Ring",
+  "category": "aaft:items",
+  "icon": "aaft:ring",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "aaft:ring",
+      "title": "Love Ring",
+      "text": "Love Ring is a pair item. Equip it in the Curios ring slot; the effect is active only when both partners wear it at the same time."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "aaft:ring",
+      "text": "Health scaling by trust tick is direct: 1-2 = +1 heart, 3-4 = +2, 5-6 = +3, 7-8 = +4, 9 = +5. At high trust, this changes survivability in long fights."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Ring path is strongest for teams that value defensive stability over volatility. Extra health creates space to recover from routing mistakes and protect your partner during chaotic phases."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "This path does not create flashy burst moments. It creates consistency, and consistency is usually what carries long AAFT runs through mistakes, bad pulls, and delayed regroup windows."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Operational rule:$() keep both rings equipped at all times. If one partner removes it at the wrong moment, both lose shared scaling and wipe risk rises immediately."
+    }
+  ]
+}

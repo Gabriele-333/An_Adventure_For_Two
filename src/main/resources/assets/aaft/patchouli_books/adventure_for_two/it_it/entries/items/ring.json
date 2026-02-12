@@ -1,0 +1,31 @@
+﻿{
+  "name": "Anello",
+  "category": "aaft:items",
+  "icon": "aaft:ring",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "aaft:ring",
+      "title": "Anello",
+      "text": "L Anello e un oggetto di coppia. Si equipaggia nello slot Curios ring; l effetto si attiva solo quando entrambi i partner lo indossano nello stesso momento."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "aaft:ring",
+      "text": "La scala vita per tick fiducia e diretta: 1-2 = +1 cuore, 3-4 = +2, 5-6 = +3, 7-8 = +4, 9 = +5. A fiducia alta cambia davvero la sopravvivenza nei fight lunghi."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Il percorso Anello rende al massimo nei team che vogliono stabilita difensiva invece di volatilita. La vita extra crea margine per correggere errori di percorso e proteggere il partner nelle fasi caotiche."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Non e un percorso da picco spettacolare. E un percorso da costanza, e la costanza e spesso cio che salva le run lunghe di AAFT da errori, pull sbagliati e regroup in ritardo."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Regola operativa:$() tieni entrambi gli anelli equipaggiati sempre. Se uno dei due lo rimuove nel momento sbagliato, perdete la scala condivisa e il rischio wipe sale subito."
+    }
+  ]
+}

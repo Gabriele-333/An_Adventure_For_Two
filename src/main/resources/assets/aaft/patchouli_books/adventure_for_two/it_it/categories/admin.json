@@ -1,0 +1,6 @@
+{
+  "name": "Admin",
+  "description": "Comandi per gestire accesso giocatori e fiducia.",
+  "icon": "minecraft:command_block",
+  "sortnum": 3
+}

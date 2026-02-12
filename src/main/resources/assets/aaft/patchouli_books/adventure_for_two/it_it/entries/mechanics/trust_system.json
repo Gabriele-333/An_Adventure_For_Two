@@ -1,0 +1,32 @@
+﻿{
+  "name": "Sistema Fiducia",
+  "category": "aaft:mechanics",
+  "icon": "minecraft:amethyst_shard",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "La Fiducia e l economia nascosta centrale di AAFT. E condivisa tra i due giocatori, va da 0 a 127 e parte da 64. Questo valore controlla direttamente limiti di distanza sicura e potenza dei bonus legati agli oggetti di coppia."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Gli eventi positivi sono concreti e regolati da cooldown. Gli scambi oggetti validi tra partner accumulano progresso; ogni scambio ha finestra di 45 secondi, e ogni 10 scambi validi danno $(bold)+5$() fiducia. La kill del Drago con entrambi validi nell End concede $(bold)+24$()."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Un obiettivo vendetta riuscito concede $(bold)+8$() fiducia: se un partner viene ucciso da un entita e l altro elimina quella stessa entita nel flusso valido, la fiducia aumenta. Anche qui ci sono tempi interni anti-abuso."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Gli eventi negativi sono altrettanto rigidi. I colpi PVP validi accumulano penalita con finestra di 20 secondi; ogni 5 colpi validi sottraggono $(bold)-10$(). Uccidere il partner in PVP applica immediatamente $(bold)-20$()."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Dal punto di vista strategico, tratta la fiducia come valuta comune. Se la consumi con caos e fuoco amico, tutto il sistema diventa meno tollerante. Se la proteggi, esplorazione e combattimento diventano molto piu stabili."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(italic)Errore tipico:$() giocare in modo emotivo o disordinato durante fasi tese. In AAFT, disciplina e comunicazione contano quasi quanto l equipaggiamento."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+﻿{
+  "name": "XP Condivisa",
+  "category": "aaft:mechanics",
+  "icon": "minecraft:experience_bottle",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "L XP condivisa serve a evitare deriva di progressione tra partner. Con due giocatori attivi, l XP guadagnata da uno viene copiata sull altro, cosi la crescita della coppia rimane allineata nel lungo periodo."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Se resta attivo un solo giocatore, il gain XP viene bloccato. Questo impedisce farm in solitaria mentre il partner e assente e protegge il modello di progressione cooperativa del mondo."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Quando un partner muore, l XP non viene droppata e parte un timer di ripristino di 30 secondi per il giocatore morto. Durante questa finestra pending, lo stato del recupero e visibile in HUD."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Se il partner vivo sopravvive fino alla fine della finestra, l XP del morto viene riallineata allo stato XP del compagno. Il sistema premia recupero stabile, non re-engage impulsivo."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Se il partner vivo muore durante il pending, entrambi vengono resettati a 0 XP. E una clausola volutamente severa che trasforma la fase pending in un checkpoint di responsabilita condivisa."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Esecuzione consigliata:$() quando parte il pending, interrompi gli overextend, stabilizza posizione e chiudi il regroup. $(italic)In AAFT preservare la coppia vale quasi sempre piu di forzare un fight in piu.$()"
+    }
+  ]
+}
