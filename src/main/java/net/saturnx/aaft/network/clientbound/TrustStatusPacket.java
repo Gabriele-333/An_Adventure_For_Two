@@ -23,8 +23,6 @@ import net.gabriele333.gabrielecore.network.CustomPayload;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import net.saturnx.aaft.client.state.ClientTrustOverlayState;
 
 public record TrustStatusPacket(
@@ -52,7 +50,6 @@ public record TrustStatusPacket(
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
     public void handleOnClient(Player player) {
         ClientTrustOverlayState.setTrust(trust);
     }

@@ -1,13 +1,15 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "patchouli"
+    }
+  ],
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:book"
-    },
-    {
-      "item": "minecraft:dandelion"
-    }
+    "minecraft:book",
+    "minecraft:dandelion"
   ],
   "result": {
     "id": "patchouli:guide_book",

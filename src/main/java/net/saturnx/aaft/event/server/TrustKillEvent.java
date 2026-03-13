@@ -42,7 +42,12 @@ public class TrustKillEvent {
             return;
         }
 
-        AAFTPlayerData players = AAFTPlayerData.get(dead.server);
+        var server = dead.level().getServer();
+        if (server == null) {
+            return;
+        }
+
+        AAFTPlayerData players = AAFTPlayerData.get(server);
         if (!players.isAllowed(killer.getUUID()) || !players.isAllowed(dead.getUUID())) {
             return;
         }
@@ -55,7 +60,7 @@ public class TrustKillEvent {
         );
         int delta = after - before;
         if (delta != 0) {
-            dead.server.getPlayerList().broadcastSystemMessage(
+            server.getPlayerList().broadcastSystemMessage(
                     Component.literal("Trust " + delta),
                     false
             );

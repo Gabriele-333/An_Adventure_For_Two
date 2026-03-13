@@ -8,7 +8,7 @@
       "type": "patchouli:spotlight",
       "item": "aaft:friendship_bracelet",
       "title": "Bracciale dell Amicizia",
-      "text": "Il Bracciale dell Amicizia e il percorso della costanza per la progressione di coppia. Si equipaggia nello slot Curios bracelet; come l Anello si attiva solo se entrambi lo indossano insieme."
+      "text": "Il Bracciale dell Amicizia e il percorso della costanza per la progressione di coppia. Deve stare nell inventario normale; come l Anello si attiva solo se entrambi lo hanno insieme."
     },
     {
       "type": "patchouli:crafting",

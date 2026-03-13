@@ -20,6 +20,7 @@ package net.saturnx.aaft.event.server;/*
 
 
 import net.gabriele333.gabrielecore.network.ClientboundPacket;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
@@ -37,20 +38,18 @@ import net.saturnx.aaft.network.clientbound.ShowToastPacket;
 import net.saturnx.aaft.network.clientbound.StopWaitingToastPacket;
 import net.saturnx.aaft.network.clientbound.TrustStatusPacket;
 import net.saturnx.aaft.server.SharedTrustState;
-import vazkii.patchouli.api.PatchouliAPI;
 
 import java.util.UUID;
 
 
 public class PlayerJoinHandler {
     private static final String FIRST_BOOK_KEY = "aaft_received_guide_book";
-    private static final ResourceLocation GUIDE_BOOK_ID =
-            ResourceLocation.fromNamespaceAndPath("aaft", "adventure_for_two");
+    private static final ResourceLocation GUIDE_BOOK_ITEM_ID = ResourceLocation.fromNamespaceAndPath("patchouli", "guide_book");
 
 
     @SubscribeEvent
     public static void onPlayerJoin(PlayerEvent.PlayerLoggedInEvent event) {
-        var server = event.getEntity().getServer();
+        var server = event.getEntity().level().getServer();
         if (server == null) return;
 
         updatePlayersState(server);
@@ -58,7 +57,7 @@ public class PlayerJoinHandler {
 
     @SubscribeEvent
     public static void onPlayerDisconnect(PlayerEvent.PlayerLoggedOutEvent event) {
-        var server = event.getEntity().getServer();
+        var server = event.getEntity().level().getServer();
         if (server == null) return;
 
         ServerPlayer leaving = (ServerPlayer) event.getEntity();
@@ -156,7 +155,7 @@ public class PlayerJoinHandler {
     @SubscribeEvent
     public static void onLogin(PlayerEvent.PlayerLoggedInEvent event) {
         ServerPlayer player = (ServerPlayer) event.getEntity();
-        var server = player.getServer();
+        var server = player.level().getServer();
         if (server == null) return;
 
         if (server.getPlayerList().getPlayerCount() > 2) {
@@ -192,11 +191,15 @@ public class PlayerJoinHandler {
             return;
         }
 
-        ItemStack guideBook = PatchouliAPI.get().getBookStack(GUIDE_BOOK_ID);
-        if (guideBook.isEmpty()) {
+        var guideBookItem = BuiltInRegistries.ITEM.getOptional(GUIDE_BOOK_ITEM_ID).orElse(null);
+        if (guideBookItem == null) {
             return;
         }
 
+        ItemStack guideBook = new ItemStack(guideBookItem);
+        if (guideBook.isEmpty()) {
+            return;
+        }
         if (!player.getInventory().add(guideBook)) {
             player.drop(guideBook, false);
         }

@@ -7,15 +7,9 @@
     " A "
   ],
   "key": {
-    "G": {
-      "item": "minecraft:gold_nugget"
-    },
-    "S": {
-      "item": "minecraft:string"
-    },
-    "A": {
-      "item": "minecraft:amethyst_shard"
-    }
+    "G": "minecraft:gold_nugget",
+    "S": "minecraft:string",
+    "A": "minecraft:amethyst_shard"
   },
   "result": {
     "count": 1,

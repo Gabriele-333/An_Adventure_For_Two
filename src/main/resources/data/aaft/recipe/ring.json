@@ -7,12 +7,8 @@
     "G G"
   ],
   "key": {
-    "G": {
-      "item": "minecraft:gold_nugget"
-    },
-    "D": {
-      "item": "minecraft:diamond"
-    }
+    "G": "minecraft:gold_nugget",
+    "D": "minecraft:diamond"
   },
   "result": {
     "count": 1,

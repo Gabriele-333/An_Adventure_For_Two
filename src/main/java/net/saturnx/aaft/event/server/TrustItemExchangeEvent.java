@@ -47,13 +47,18 @@ public class TrustItemExchangeEvent {
             return;
         }
 
-        AAFTPlayerData players = AAFTPlayerData.get(player.server);
+        var server = player.level().getServer();
+        if (server == null) {
+            return;
+        }
+
+        AAFTPlayerData players = AAFTPlayerData.get(server);
         if (!players.isAllowed(player.getUUID()) || !players.isAllowed(ownerPlayer.getUUID())) {
             return;
         }
 
-        long gameTime = player.server.overworld().getGameTime();
-        AAFTTrustItemData trustData = AAFTTrustItemData.get(player.server);
+        long gameTime = server.overworld().getGameTime();
+        AAFTTrustItemData trustData = AAFTTrustItemData.get(server);
         int earned = trustData.registerExchange(gameTime);
         if (earned > 0) {
             int before = SharedTrustState.getTrust();
@@ -64,7 +69,7 @@ public class TrustItemExchangeEvent {
             );
             int delta = after - before;
             if (delta != 0) {
-                player.server.getPlayerList().broadcastSystemMessage(
+                server.getPlayerList().broadcastSystemMessage(
                         Component.literal("Trust +" + delta),
                         false
                 );

@@ -39,13 +39,8 @@ public class XpTickEvent {
         MinecraftServer server = event.getServer();
         long now = server.getTickCount();
 
-        ServerPlayer dead = null;
-        ServerPlayer alive = null;
-
-        for (ServerPlayer p : server.getPlayerList().getPlayers()) {
-            if (SharedXpState.isDeadPlayer(p)) dead = p;
-            else if (SharedXpState.isAlivePlayer(p)) alive = p;
-        }
+        ServerPlayer dead = SharedXpState.getDeadPlayer(server);
+        ServerPlayer alive = SharedXpState.getAlivePlayer(server);
 
         if (dead == null || alive == null) {
             reset(server);

@@ -26,11 +26,11 @@ import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.saturnx.aaft.item.AAFTItem;
 import net.saturnx.aaft.server.SharedTrustState;
-import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.Collection;
 import java.util.List;
@@ -73,9 +73,7 @@ public class LuckTickEvent {
     /* Luck etc */
 
     public static boolean hasBraceletEquipped(Player player) {
-        return CuriosApi.getCuriosInventory(player)
-                .map(inv -> inv.findFirstCurio(AAFTItem.BRACELET.get()).isPresent())
-                .orElse(false);
+        return player.getInventory().contains(new ItemStack(AAFTItem.BRACELET.get()));
     }
 
     private static void applyBonus(ServerPlayer player, int bonusLuck) {
@@ -128,3 +126,5 @@ public class LuckTickEvent {
         return 3;
     }
 }
+
+

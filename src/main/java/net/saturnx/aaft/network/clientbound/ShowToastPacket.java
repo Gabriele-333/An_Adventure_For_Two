@@ -23,13 +23,9 @@ import net.gabriele333.gabrielecore.network.ClientboundPacket;
 import net.gabriele333.gabrielecore.network.CustomPayload;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
-import net.saturnx.aaft.client.state.ClientGameState;
-import net.saturnx.aaft.client.InfoToast;
+import net.saturnx.aaft.client.AAFTClientToasts;
 
 public record
 ShowToastPacket(String titleKey, String descKey)
@@ -61,18 +57,8 @@ ShowToastPacket(String titleKey, String descKey)
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
     public void handleOnClient(Player player) {
-        ClientGameState.startWaiting();
         var mc = Minecraft.getInstance();
-
-        mc.execute(() -> {
-            mc.getToasts().addToast(
-                    new InfoToast(
-                            Component.translatable(titleKey),
-                            Component.translatable(descKey)
-                    )
-            );
-        });
+        mc.execute(() -> AAFTClientToasts.showWaitingPlayerToast(titleKey, descKey));
     }
 }

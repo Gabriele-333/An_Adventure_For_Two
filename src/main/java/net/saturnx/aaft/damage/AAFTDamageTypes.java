@@ -33,3 +33,5 @@ public final class AAFTDamageTypes {
     private AAFTDamageTypes() {
     }
 }
+
+

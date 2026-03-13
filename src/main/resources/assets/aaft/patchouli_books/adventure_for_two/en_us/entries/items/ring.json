@@ -8,7 +8,7 @@
       "type": "patchouli:spotlight",
       "item": "aaft:ring",
       "title": "Love Ring",
-      "text": "Love Ring is a pair item. Equip it in the Curios ring slot; the effect is active only when both partners wear it at the same time."
+      "text": "Love Ring is a pair item. Keep it in your normal inventory; the effect is active only when both partners have it at the same time."
     },
     {
       "type": "patchouli:crafting",
@@ -25,7 +25,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "$(bold)Operational rule:$() keep both rings equipped at all times. If one partner removes it at the wrong moment, both lose shared scaling and wipe risk rises immediately."
+      "text": "$(bold)Operational rule:$() keep both rings in inventory at all times. If one partner drops it or stores it away at the wrong moment, both lose shared scaling and wipe risk rises immediately."
     }
   ]
 }

@@ -19,6 +19,7 @@ package net.saturnx.aaft.event.server.xp;/*
  */
 
 import net.minecraft.server.level.ServerPlayer;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingExperienceDropEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
@@ -40,7 +41,7 @@ ExperiencePlayerDeathHandler {
     public static void onPlayerDeath(PlayerEvent.PlayerRespawnEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer dead)) return;
 
-        var server = dead.getServer();
+        var server = dead.level().getServer();
         if (server == null) return;
 
         var players = server.getPlayerList().getPlayers()
@@ -65,25 +66,19 @@ ExperiencePlayerDeathHandler {
     }
 
     @SubscribeEvent
-    public static void onSecondDeath(PlayerEvent.PlayerRespawnEvent event) {
-        if (!(event.getEntity() instanceof ServerPlayer p)) return;
+    public static void onPendingAliveDeath(LivingDeathEvent event) {
+        if (!(event.getEntity() instanceof ServerPlayer alive)) return;
+        if (!SharedXpState.isPending() || !SharedXpState.isAlivePlayer(alive)) return;
 
-        if (!SharedXpState.isPending()) return;
-        if (!SharedXpState.isAlivePlayer(p)) return;
+        var server = alive.level().getServer();
+        if (server == null) return;
 
-        ServerPlayer dead = SharedXpState.isDeadPlayer(p) ? null : p;
-        ServerPlayer other = SharedXpState.isDeadPlayer(p) ? p : null;
-
-        if (dead == null || other == null) return;
-
-        dead.setExperiencePoints(0);
-        other.setExperiencePoints(0);
-
+        SharedXpState.resetAllXp(server);
         SharedXpState.clear();
-        PacketDistributor.sendToPlayer(
-                dead,
-                new XpRestoreStatusPacket(false, 0)
-        );
+
+        for (ServerPlayer p : server.getPlayerList().getPlayers()) {
+            PacketDistributor.sendToPlayer(p, new XpRestoreStatusPacket(false, 0));
+        }
     }
 
 }

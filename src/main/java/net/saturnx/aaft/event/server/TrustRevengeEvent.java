@@ -43,7 +43,11 @@ public class TrustRevengeEvent {
             return;
         }
 
-        var server = victim.server;
+        var server = victim.level().getServer();
+        if (server == null) {
+            return;
+        }
+
         AAFTPlayerData players = AAFTPlayerData.get(server);
         if (!players.isAllowed(victim.getUUID())) {
             return;
@@ -64,7 +68,11 @@ public class TrustRevengeEvent {
             return;
         }
 
-        var server = killer.server;
+        var server = killer.level().getServer();
+        if (server == null) {
+            return;
+        }
+
         AAFTPlayerData players = AAFTPlayerData.get(server);
         if (!players.isAllowed(killer.getUUID())) {
             return;

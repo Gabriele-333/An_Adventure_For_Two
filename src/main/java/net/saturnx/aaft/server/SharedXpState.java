@@ -20,18 +20,19 @@ package net.saturnx.aaft.server;/*
 
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
-import net.saturnx.aaft.config.AAFTServerConfig;
+
+import java.util.UUID;
 
 public final class SharedXpState {
 
-    private static ServerPlayer deadPlayer;
-    private static ServerPlayer alivePlayer;
+    private static UUID deadPlayerId;
+    private static UUID alivePlayerId;
     private static long restoreDeadline; // gameTime
     private static boolean pending;
 
     public static void start(ServerPlayer dead, ServerPlayer alive, long gameTime) {
-        deadPlayer = dead;
-        alivePlayer = alive;
+        deadPlayerId = dead.getUUID();
+        alivePlayerId = alive.getUUID();
         restoreDeadline = gameTime + (30 * 20);
         pending = true;
     }
@@ -41,11 +42,19 @@ public final class SharedXpState {
     }
 
     public static boolean isDeadPlayer(ServerPlayer p) {
-        return pending && p == deadPlayer;
+        return pending && deadPlayerId != null && deadPlayerId.equals(p.getUUID());
     }
 
     public static boolean isAlivePlayer(ServerPlayer p) {
-        return pending && p == alivePlayer;
+        return pending && alivePlayerId != null && alivePlayerId.equals(p.getUUID());
+    }
+
+    public static ServerPlayer getDeadPlayer(MinecraftServer server) {
+        return deadPlayerId == null ? null : server.getPlayerList().getPlayer(deadPlayerId);
+    }
+
+    public static ServerPlayer getAlivePlayer(MinecraftServer server) {
+        return alivePlayerId == null ? null : server.getPlayerList().getPlayer(alivePlayerId);
     }
 
     public static long remainingTicks(long gameTime) {
@@ -53,8 +62,8 @@ public final class SharedXpState {
     }
 
     public static void clear() {
-        deadPlayer = null;
-        alivePlayer = null;
+        deadPlayerId = null;
+        alivePlayerId = null;
         pending = false;
     }
 

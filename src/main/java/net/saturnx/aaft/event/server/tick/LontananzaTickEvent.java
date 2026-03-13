@@ -18,10 +18,11 @@ package net.saturnx.aaft.event.server.tick;/*
  * File created on: 03/02/2026
  */
 
+
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.saturnx.aaft.damage.AAFTDamageTypes;

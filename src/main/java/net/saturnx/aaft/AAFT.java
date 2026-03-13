@@ -13,6 +13,7 @@ import net.saturnx.aaft.event.server.tick.CompassCooldownTickEvent;
 import net.saturnx.aaft.event.server.tick.DistanceTickEvent;
 import net.saturnx.aaft.event.server.tick.HealthTickEvent;
 import net.saturnx.aaft.event.server.tick.LontananzaTickEvent;
+import net.saturnx.aaft.event.server.tick.LuckTickEvent;
 import net.saturnx.aaft.event.server.tick.XpTickEvent;
 import net.saturnx.aaft.event.server.xp.ExperiencePlayerDeathHandler;
 import net.saturnx.aaft.event.server.xp.ExperienceSyncHandler;
@@ -40,6 +41,7 @@ public abstract class AAFT {
 
         NeoForge.EVENT_BUS.register(XpTickEvent.class);
         NeoForge.EVENT_BUS.register(HealthTickEvent.class);
+        NeoForge.EVENT_BUS.register(LuckTickEvent.class);
         NeoForge.EVENT_BUS.register(LontananzaTickEvent.class);
         NeoForge.EVENT_BUS.register(DistanceTickEvent.class);
         NeoForge.EVENT_BUS.register(CompassCooldownTickEvent.class);
@@ -50,6 +52,7 @@ public abstract class AAFT {
         NeoForge.EVENT_BUS.register(RemindSecondPlayerEvent.class);
         NeoForge.EVENT_BUS.register(UniqueItemCraftingEvents.class);
         NeoForge.EVENT_BUS.register(TrustItemExchangeEvent.class);
+        NeoForge.EVENT_BUS.register(TrustHealInteractEvent.class);
         NeoForge.EVENT_BUS.register(TrustHitEvent.class);
         NeoForge.EVENT_BUS.register(TrustKillEvent.class);
         NeoForge.EVENT_BUS.register(TrustDragonKillEvent.class);

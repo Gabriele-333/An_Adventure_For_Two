@@ -54,7 +54,12 @@ public class UniqueItemCraftingEvents {
         }
 
         ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(item);
-        AAFTUniqueItemData data = AAFTUniqueItemData.get(player.server);
+        var server = player.level().getServer();
+        if (server == null) {
+            return;
+        }
+
+        AAFTUniqueItemData data = AAFTUniqueItemData.get(server);
 
         if (!data.hasChoice()) {
             data.choose(itemId);
@@ -134,3 +139,5 @@ public class UniqueItemCraftingEvents {
         return List.of();
     }
 }
+
+

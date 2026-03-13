@@ -47,13 +47,18 @@ public class TrustHitEvent {
             return;
         }
 
-        AAFTPlayerData players = AAFTPlayerData.get(target.server);
+        var server = target.level().getServer();
+        if (server == null) {
+            return;
+        }
+
+        AAFTPlayerData players = AAFTPlayerData.get(server);
         if (!players.isAllowed(attacker.getUUID()) || !players.isAllowed(target.getUUID())) {
             return;
         }
 
-        long gameTime = target.server.overworld().getGameTime();
-        AAFTTrustHitData hitData = AAFTTrustHitData.get(target.server);
+        long gameTime = server.overworld().getGameTime();
+        AAFTTrustHitData hitData = AAFTTrustHitData.get(server);
         int earned = hitData.registerHit(gameTime);
         if (earned > 0) {
             int before = SharedTrustState.getTrust();
@@ -64,7 +69,7 @@ public class TrustHitEvent {
             );
             int delta = after - before;
             if (delta != 0) {
-                target.server.getPlayerList().broadcastSystemMessage(
+                server.getPlayerList().broadcastSystemMessage(
                         Component.literal("Trust " + delta),
                         false
                 );

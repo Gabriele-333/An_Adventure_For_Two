@@ -69,6 +69,7 @@ versionRange = "${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
 
+
 [[dependencies."${mod_id}"]]
 modId="curios"
 mandatory=true
@@ -90,6 +91,7 @@ mandatory=true
 versionRange="${patchouli_version_range}"
 ordering="NONE"
 side="BOTH"
+
 
 
 # Features are specific properties of the game environment, that you may want to declare you require. This example declares

@@ -23,8 +23,6 @@ import net.gabriele333.gabrielecore.network.CustomPayload;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import net.saturnx.aaft.client.state.ClientXpOverlayState;
 
 public record XpRestoreStatusPacket(
@@ -57,7 +55,6 @@ public record XpRestoreStatusPacket(
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
     public void handleOnClient(Player player){
         ClientXpOverlayState.pending = active;
         ClientXpOverlayState.remainingTicks = remainingTicks;

@@ -7,15 +7,9 @@
     " E "
   ],
   "key": {
-    "A": {
-      "item": "minecraft:amethyst_shard"
-    },
-    "C": {
-      "item": "minecraft:compass"
-    },
-    "E": {
-      "item": "minecraft:ender_pearl"
-    }
+    "A": "minecraft:amethyst_shard",
+    "C": "minecraft:compass",
+    "E": "minecraft:ender_pearl"
   },
   "result": {
     "count": 1,

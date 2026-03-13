@@ -20,8 +20,10 @@ package net.saturnx.aaft.event.server.xp;/*
 
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
-import net.saturnx.aaft.config.AAFTServerConfig;
+import net.neoforged.neoforge.network.PacketDistributor;
+import net.saturnx.aaft.network.clientbound.XpRestoreStatusPacket;
 import net.saturnx.aaft.server.SharedXpState;
 
 public class ExperienceSyncHandler {
@@ -29,23 +31,16 @@ public class ExperienceSyncHandler {
     // Flag per prevenire ricorsione
     private static final ThreadLocal<Boolean> isSyncing = ThreadLocal.withInitial(() -> false);
 
-    /* TODO
-    On spawn sync
-     */
-
-    /* FIXME
-    il giocatore quando è in pending riceve xp che si elimina.
-     */
-
     @SubscribeEvent
     public static void onXpChange(PlayerXpEvent.XpChange event) {
-
-
         if (SharedXpState.isPending()) {
-            event.setAmount(0);
+            if (event.getEntity() instanceof ServerPlayer player && SharedXpState.isDeadPlayer(player)) {
+                event.setAmount(0);
+            }
             return;
         }
-        // Se stiamo già sincronizzando, esci per evitare ricorsione
+
+        // Se stiamo gia sincronizzando, esci per evitare ricorsione.
         if (isSyncing.get()) {
             return;
         }
@@ -93,11 +88,33 @@ public class ExperienceSyncHandler {
         }
     }
 
-    private static void addExperienceSilently(ServerPlayer player, int xpAmount) {
+    @SubscribeEvent
+    public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
+        syncPendingOverlay((ServerPlayer) event.getEntity());
+    }
 
+    @SubscribeEvent
+    public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
+        syncPendingOverlay((ServerPlayer) event.getEntity());
+    }
+
+    private static void syncPendingOverlay(ServerPlayer player) {
+        if (!SharedXpState.isPending() || !SharedXpState.isDeadPlayer(player)) {
+            return;
+        }
+
+        var server = player.level().getServer();
+        if (server == null) {
+            return;
+        }
+
+        int remaining = (int) SharedXpState.remainingTicks(server.getTickCount());
+        PacketDistributor.sendToPlayer(player, new XpRestoreStatusPacket(true, remaining));
+    }
+
+    private static void addExperienceSilently(ServerPlayer player, int xpAmount) {
         if (xpAmount > 0) {
             player.setScore(player.getScore() + xpAmount);
-
 
             int newExperience = (int) (player.experienceProgress * player.getXpNeededForNextLevel() + xpAmount);
 

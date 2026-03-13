@@ -8,7 +8,7 @@
       "type": "patchouli:spotlight",
       "item": "aaft:ring",
       "title": "Anello",
-      "text": "L Anello e un oggetto di coppia. Si equipaggia nello slot Curios ring; l effetto si attiva solo quando entrambi i partner lo indossano nello stesso momento."
+      "text": "L Anello e un oggetto di coppia. Deve stare nell inventario normale; l effetto si attiva solo quando entrambi i partner lo hanno nello stesso momento."
     },
     {
       "type": "patchouli:crafting",
@@ -25,7 +25,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "$(bold)Regola operativa:$() tieni entrambi gli anelli equipaggiati sempre. Se uno dei due lo rimuove nel momento sbagliato, perdete la scala condivisa e il rischio wipe sale subito."
+      "text": "$(bold)Regola operativa:$() tieni sempre entrambi gli anelli in inventario. Se uno dei due lo lascia a terra o lo mette via nel momento sbagliato, perdete la scala condivisa e il rischio wipe sale subito."
     }
   ]
 }

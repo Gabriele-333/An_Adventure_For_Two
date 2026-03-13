@@ -20,12 +20,11 @@ package net.saturnx.aaft.network.clientbound;/*
 
 import net.gabriele333.gabrielecore.network.ClientboundPacket;
 import net.gabriele333.gabrielecore.network.CustomPayload;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
-import net.saturnx.aaft.client.state.ClientGameState;
+import net.saturnx.aaft.client.AAFTClientToasts;
 
 public record StopWaitingToastPacket() implements ClientboundPacket {
 
@@ -41,8 +40,8 @@ public record StopWaitingToastPacket() implements ClientboundPacket {
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
     public void handleOnClient(Player player) {
-        ClientGameState.stopWaiting();
+        var mc = Minecraft.getInstance();
+        mc.execute(AAFTClientToasts::hideWaitingPlayerToast);
     }
 }
